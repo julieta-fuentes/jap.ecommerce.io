@@ -10,6 +10,7 @@
   <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
+  <link href="css/product.css" rel="stylesheet">
 </head>
 
 <body>
@@ -25,7 +26,7 @@
             <a class="nav-link" href="index.html">Inicio</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="categories.html">Categorías</a>
+            <a class="nav-link active" href="categories.html">Categorías</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="sell.html">Vender</a>
@@ -36,13 +37,29 @@
       </div>
     </div>
   </nav>
-  <main class="pb-5 container">
-    <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
+  <main>
+    <div class="title">
+      <h4> Autos</h4>
+      <p> Verás aquí los autos disponibles actualmente.</p>
+    </div>
+    <div class="contenido" id="mostrador">
+        <div class="row" id="fila"></div>
+    </div>
+    <div class="seleccion" id="seleccion">
+      <div class="cerrar" onclick="cerrar()">
+          &#x2715
+      </div>
+      <div class="info">
+        <img src="..." alt="" id="img">
+        <h2 id="modelo"></h2>
+        <span class="precio" id="precio"></span><br>
+        <br>
+        <p id="descripcion"></p>
+        <p id="vendidos"></p>
       </div>
     </div>
   </main>
+
   <footer class="text-muted">
     <div class="container">
       <p class="float-end">
