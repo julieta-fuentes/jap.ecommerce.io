@@ -1,11 +1,11 @@
 body{
+    position: absolute;
     font-family: 'Inter';
     font-size: 15px;
 }
 
 .login{
-    position: absolute;
-    margin-right: 53rem;
+    margin-right: 55.5rem;
     margin-left: 10rem;
     margin-top: 0rem;
 }
@@ -14,7 +14,7 @@ body{
     background: rgba(240, 126, 31, .8);
     color: white;
     border-radius: 0.5rem;
-    padding-bottom: 11.5rem;
+    padding-bottom: 10.42rem;
     padding-top: 2.5rem;
 }
 
