@@ -12,10 +12,9 @@
 }
 
 .contenido{
-    margin: 50px;
+    margin-left: 90px;
     margin-top: 0px;
     position: relative;
-    justify-content: center;
 }
 
 .card{

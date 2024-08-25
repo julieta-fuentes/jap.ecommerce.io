@@ -54,7 +54,7 @@ let vendidoSeleccionado = document.getElementById("vendidos");
 function cargar(item){
     quitarBordes();
     mostrador.style.width = "80%"
-    mostrador.style.transform ='translateX(-2vw)';
+    mostrador.style.transform ='translateX(-3vw)';
     seleccion.style.width = "30%";
     seleccion.style.opacity = "1";
     seleccion.style.border = "1px solid black";
