@@ -32,6 +32,7 @@
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
           <li class="nav-item">
+            <a id="user-name" class="nav-link" href="#">Usuario</a>
           </li>
         </ul>
       </div>
@@ -39,8 +40,48 @@
   </nav>
   <main>
     <div class="title">
-      <h4> Autos</h4>
-      <p> Verás aquí los autos disponibles actualmente.</p>
+      <h4  id="title"></h4>
+      <p id="descrip"></p>
+    </div>
+    
+   <div class="container">
+     <div class="row">
+      <div class="col text-end">
+        <div class="btn-group btn-group-toggle mb-4" data-bs-toggle="buttons">
+          <input type="radio" class="btn-check" name="options" id="sortDescPrice">
+          <label class="btn btn-light" for="sortDescPrice"><i class="fas fa-sort-amount-down mr-1"></i>$</label>
+          <input type="radio" class="btn-check" name="options" id="sortAscPrice">
+          <label class="btn btn-light" for="sortAscPrice"><i class="fas fa-sort-amount-up mr-1"></i>$</label>
+          <input type="radio" class="btn-check" name="options" id="sortByCount">
+          <label class="btn btn-light" for="sortByCount"><i class="fas fa-sort-amount-down mr-1"></i>Rel.</label>
+        </div>
+      </div>
+     </div>
+
+     <div class="row">
+      <div class="col-lg-12 col-md-12 mb-1 container text-end">
+        <div class="row container p-0 m-0">
+          <div class="col input-group mb-3">
+            <span class="input-group-text" id="basic-addon1">🔍</span>
+            <input class="form-control" type="search" id="searchInput" placeholder="Search...">
+          </div>
+          <div class="col">
+            <p class="font-weight-normal text-end my-2">Precio</p>
+          </div>
+          <div class="col">
+            <input class="form-control" type="number" placeholder="2500" id="rangeFilterCountMin">
+          </div>
+          <div class="col">
+            <input class="form-control" type="number" placeholder="15000" id="rangeFilterCountMax">
+          </div>
+          <div class="col-2 p-0">
+            <div class="btn-group" role="group">
+              <button class="btn btn-light btn-block" id="rangeFilterCount">Filtrar</button>
+              <button class="btn btn-link btn-sm" id="clearRangeFilter">Limpiar</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="contenido" id="mostrador">
         <div class="row" id="fila"></div>
@@ -56,6 +97,9 @@
         <br>
         <p id="descripcion"></p>
         <p id="vendidos"></p>
+      </div>
+      <div>
+        <button class="btn btn-primary" id="botón">Ver más</button>
       </div>
     </div>
   </main>
@@ -79,6 +123,16 @@
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
   <script src="js/products.js"></script>
+
+  <script>
+    window.onload = function() {
+        // Verifica si el usuario está logueado y si el nombre de usuario existe en localStorage
+        if (localStorage.getItem('loggedIn') && localStorage.getItem('userName')) {
+            var userName = localStorage.getItem('userName');
+            document.getElementById('user-name').textContent = userName;
+        }
+    };
+</script>
 </body>
 
 </html>

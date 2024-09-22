@@ -31,6 +31,7 @@
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
           <li class="nav-item">
+            <a id="user-name" class="nav-link" href="#">Usuario</a>
           </li>
         </ul>
       </div>
@@ -100,6 +101,15 @@
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
   <script src="js/categories.js"></script>
+  <script>
+    window.onload = function() {
+        // Verifica si el usuario está logueado y si el nombre de usuario existe en localStorage
+        if (localStorage.getItem('loggedIn') && localStorage.getItem('userName')) {
+            var userName = localStorage.getItem('userName');
+            document.getElementById('user-name').textContent = userName;
+        }
+    };
+</script>
 </body>
 
 </html>
