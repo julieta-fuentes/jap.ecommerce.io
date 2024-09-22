@@ -1,0 +1,18 @@
+
+.card-body {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 700px;
+    margin: 20px;
+    text-align:left;
+    font-family: Arial, sans-serif;
+
+}
+
+.carousel-control-prev, .carousel-control-next {
+    background-color: rgba(0, 0, 0, 0.8);
+    top: 42%;
+    bottom: 42%;
+    width: 10%;
+}

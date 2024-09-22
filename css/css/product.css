@@ -1,0 +1,125 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;800&display=swap');
+*{
+    font-family: 'Open Sans';
+}
+
+.title{
+    text-align: center;
+    padding: 2%;
+}
+
+#mostrador{
+    position: relative;
+    margin-left: 3%;
+}
+
+.card{
+    width: 18rem;
+    cursor: pointer;
+    margin-bottom: 25px;
+    margin-left: 1rem;
+    align-items: center;
+}
+
+img{
+    width: 15rem;
+}
+
+.descripcion{
+    font-weight: 300;
+    font-size: 15px;
+}
+
+.precio{
+    font-size: 22px;
+    font-weight: 500;
+}
+
+.vendidos , #vendidos{
+    font-size: small;
+    font-weight: 300;
+}
+
+.modelo{
+    font-size: 26px;
+    font-weight: 500;
+}
+
+.seleccion{
+    opacity: 0;
+    width: 0%;
+    border: 1px solid #ccc;
+    position: fixed;
+    right: 0px; 
+    top: 15%;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    background-color: white;
+    transition: 0.5s ease;
+}
+
+.cerrar{
+    position: absolute;
+    top: 1%;
+    right: 20px;
+    cursor: pointer;
+    background-color: white;
+}
+
+.info{
+    padding: 10px;
+}
+
+.info img{
+    width: 100%;
+}
+
+
+@media only screen and (max-width: 560px){
+    *{
+        font-size: 12px;
+    }
+
+    #mostrador {
+        width: 90%;
+        margin-left: 2%;
+    }
+
+    .col-3{
+        width: 30%;
+    }
+
+    .card {
+        width: 70%;
+    }
+
+    img {
+        width: 100%;
+    }
+
+    .row{
+        display: flex;
+        justify-content: center;
+    }
+
+    .modelo, .precio{
+        font-size: 18px;
+    }
+
+}
+
+@media only screen and (max-width: 1000px) and (min-width: 561px) and (min-height: 600px){
+    .card {
+        width: 45%;
+    }
+
+    img {
+        width: 100%;
+    }
+    
+    #mostrador {
+        margin-left: 10%;
+        width: 85%;
+    }
+}
+
