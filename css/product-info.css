@@ -16,3 +16,136 @@
     bottom: 42%;
     width: 10%;
 }
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+.star-rating {
+    display: flex;
+    flex-direction: row-reverse; /* Para que visualmente se comporten correctamente con el CSS */
+    justify-content:center;
+    font-size: 3em;
+}
+
+.star-rating input {
+    display: none; /* Escondemos los botones de radio */
+}
+
+.star-rating label {
+    color: #ddd;
+    cursor: pointer;
+}
+
+  /* Al seleccionar una estrella (con click) */
+.star-rating input:checked ~ label {
+    color: gold;
+}
+
+  /* Al pasar el mouse sobre una estrella */
+.star-rating label:hover,
+.star-rating label:hover ~ label {
+    color: gold;
+}
+
+.resenias {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.calificar1, .calificar2 {
+    padding: 20px;
+    border: 1px solid rgba(192, 192, 192, 0.363);
+    border-radius: 10px;
+    margin: 5px;
+    flex: 1 1 48%; /* Aseguramos que ambos contenedores ocupen 48% del ancho en pantallas grandes */
+    max-width: 48%;
+}
+
+.calificar1 {
+    text-align: left;
+}
+
+.calificar2 {
+    text-align: center;
+}
+
+#submit {
+    background-color: rgb(0, 153, 255);
+    color: white;
+    border-radius: 5px;
+    width: 20%;
+    padding: 2%;
+    margin-top: 10px;
+}
+
+.star {
+    font-size: 1.5rem;
+    color:  #ddd;
+}
+
+.star.filled {
+    color: gold;
+}
+@media (max-width: 700px) {
+    .calificar1, .calificar2 {
+        flex: 1 1 100%;
+        max-width: 100%; /* Ocupa el 100% del ancho */
+    }
+    .star-rating {
+        font-size: 3em; /* Ajusta el tamaño de las estrellas para pantallas pequeñas */
+    }
+    #comment {
+        width: 100%; /* Ajusta el ancho del textarea para pantallas pequeñas */
+    }
+    #submit {
+        width: 100%; /* Ajusta el ancho del botón de envío */
+    }
+}
+@media (max-width:400px){
+    .star-rating {
+        font-size: 4em; /* Aumenta el tamaño de las estrellas para pantallas muy pequeñas */
+        padding: 5%;
+    }
+    .calificar1, .calificar2 {
+        max-width: 100%; /* Ocupa el 100% del ancho */
+    }
+    #comment {
+        width: 100%; /* Asegura que el textarea ocupe todo el ancho */
+    }
+    #submit {
+        width: 100%; /* Asegura que el botón de envío ocupe todo el ancho */
+    }
+}
+
+.product-card {
+    display: inline-block;
+    width: 250px;
+    height: 260px;
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.product-card img {
+    max-width: 100%;
+    height: auto;
+}
+
+.product-card h2 {
+    font-size: 1.2rem;
+    margin: 10px 0;
+}
+
+.product-card p {
+    color: #555;
+}
+
+.fecha{
+    text-decoration: none;
+}

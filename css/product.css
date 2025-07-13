@@ -76,7 +76,7 @@ img{
 
 
 @media only screen and (max-width: 560px){
-    *{
+    main{
         font-size: 12px;
     }
 
@@ -122,4 +122,48 @@ img{
         width: 85%;
     }
 }
+/* Estilos para el modo día  */
+body {
+    background-color: #ffffff;
+    color: #000000; 
+}
 
+.card {
+    background-color: #f8f9fa; 
+    border-color: #dddddd;
+    color: #000000;
+}
+
+.card-title,
+.card-text {
+    color: #000000; 
+}
+
+/* Estilos para el modo noche */
+body.night {
+    background-color: #121212; 
+    color: #ffffff; 
+}
+
+body.night .card {
+    background-color: #2a2a2a; 
+    border-color: #444444; 
+    color: #ffffff; 
+}
+
+body.night .card-title,
+body.night .card-text {
+    color: #ffffff; 
+}
+
+body.night a {
+    color: #bbbbbb; 
+}
+
+body.night .seleccion{
+    background-color: #2a2a2a; 
+}
+
+body.night .cerrar{
+    background-color: #2a2a2a; 
+}

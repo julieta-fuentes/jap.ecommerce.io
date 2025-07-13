@@ -22,12 +22,6 @@ nav a {
   user-select: none;
 }
 
-@media (min-width: 768px) {
-  .bd-placeholder-img-lg {
-    font-size: 3.5rem;
-  }
-}
-
 .jumbotron {
   height: 50vh;
   padding: 5em inherit;
@@ -39,13 +33,6 @@ nav a {
   background-repeat: no-repeat;
   color: black;
   font-weight: bold;
-}
-
-@media (min-width: 768px) {
-  .jumbotron {
-    padding-top: 6rem;
-    padding-bottom: 6rem;
-  }
 }
 
 .jumbotron p:last-child {
@@ -189,4 +176,189 @@ a.custom-card:hover {
   color: orange;
 }
 
+@media (max-width: 500px){ /* Media para ajustar la imagen de e-commerce en pantallas pequeñas*/
+  .jumbotron { 
+    height: 18vh;
+  }
+}
 
+@media (max-width: 1000px) and (min-width:568px ) {
+  .jumbotron {
+    width: 100%;
+    height: 20vh;
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+  }
+  .bd-placeholder-img-lg {
+    font-size: 3.5rem;
+  }
+}
+@media (max-width: 1500px) {
+  .user-button {
+    position: absolute;
+    right: 1rem;
+  }
+}
+
+nav {
+  display: inline-block;
+}
+
+.user-button {
+  padding-left: 10rem;
+}
+
+#user-name {
+  font-size: 18px;
+}
+
+/* Estilos para Modo Noche */
+.night {
+  background-color: #121212;
+  color: #ddd;
+}
+.night .navbar-dark {
+  background-color: #1f1f1f;
+}
+.night .navbar .nav-link {
+  color: #ddd;
+}
+.night .navbar .nav-link.active {
+  color: #ddd;
+}
+
+.night #mododia-noche {
+  color: #fff;
+}
+.night .card-body {
+  border-top: 1px solid #444;
+}
+.night footer {
+  background-color: #1f1f1f;
+  color: #ccc;
+}
+.night footer .float-end a {
+  color: #ccc;
+}
+body.night .card-body {
+  background-color: #333; 
+  color: #fff; 
+}
+body.night a {
+  color: #bbbbbb; 
+}
+body.night {
+    background-color: #121212; 
+    color: #ffffff; 
+}
+body.night .card {
+    background-color: #2a2a2a; 
+    border-color: #444444; 
+    color: #ffffff; 
+}
+body.night .card-title,
+body.night .card-text {
+    color: #ffffff; 
+}
+body.night a {
+    color: #bbbbbb; 
+}
+body.night .seleccion{
+    background-color: #2a2a2a; 
+}
+body.night .cerrar{
+    background-color: #2a2a2a; 
+}
+/* Estilos para la lista de categorías */
+.night #cat-list-container .list-group-item {
+  background-color: #333333;
+  color: #ffffff;
+  border: 1px solid #444444;
+  transition: background-color 0.3s;
+}
+.night .form-control,
+.night .custom-select {
+  background-color: #333; 
+  color: #ffffff; 
+  border: 1px solid #444; 
+}
+.night .list-group-item {
+  background-color: #343a40; 
+  color: #ffffff; 
+}
+.night #file-upload {
+  background-color: #343a40; 
+  color: #ffffff; 
+  border: 2px dashed #adb5bd;
+}
+.night .dz-message {
+  color: #ffffff; 
+}
+.night .btn-light {
+  background-color: #343a40; 
+  color: #fff; 
+  border-color: #343a40;
+}
+.night #comment {
+  background-color: #222; 
+  color: #fff; 
+  border: 1px solid #555; 
+}
+.night #myForm {
+  background-color: #222; 
+}
+
+.night .jumbotron {
+  background: url("../img/mercado\ \(2\).png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: black;
+  font-weight: bold;
+}
+
+.night .bg-light {
+  background-color: black!important;
+
+}
+
+.night .table-hover {
+  color: white;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  font-weight: bold;
+}
+
+.night .modal-content {
+  border-radius: 10px;
+  box-shadow: 0 2px 15px white;
+  background-color: black;
+  font-family: 'Arial', sans-serif;
+  padding: 20px;
+}
+
+.night .modal-header {
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 15px;
+}
+
+.night .modal-header .modal-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: white;
+}
+
+.night .form-label {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: white;
+}
+
+.night .form-control {
+  border-radius: 30px;
+  border: 1px solid white;
+  padding: 10px 15px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}

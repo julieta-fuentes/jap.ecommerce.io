@@ -47,17 +47,17 @@ document.getElementById('clearRangeFilter').addEventListener('click', function (
     document.getElementById('rangeFilterCountMax').value = '';
     
     showData(allProducts); // Mostrar todos los productos
-    });
+});
 
-    document.getElementById('searchInput').addEventListener('input', function () {
-        const searchTerm = this.value.toLowerCase();
-        const filteredProducts = allProducts.filter(product => {
-            const name = product.name ? product.name.toLowerCase() : '';
-            const description = product.description ? product.description.toLowerCase() : '';
-            return name.includes(searchTerm) || description.includes(searchTerm);
-        });
-        showData(filteredProducts);
-    });    
+document.getElementById('searchInput').addEventListener('input', function () {
+    const searchTerm = this.value.toLowerCase();
+    const filteredProducts = allProducts.filter(product => {
+        const name = product.name ? product.name.toLowerCase() : '';
+        const description = product.description ? product.description.toLowerCase() : '';
+        return name.includes(searchTerm) || description.includes(searchTerm);
+    });
+    showData(filteredProducts);
+});    
     
 // Función para mostrar los datos en el DOM
 
@@ -89,26 +89,16 @@ function showData(products) {
 let categoria = '';
 let allProducts = [];
 
-function getAPIData(url) {
+document.addEventListener("DOMContentLoaded", function(e){
     const categoriaId = localStorage.getItem("catID");
-    return fetch(`${url}/${categoriaId}.json`)
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error("Network response was not ok " + response.statusText);
-      }
-      return response.json();
-    })
-    .then((data) => {
-        categoria = data.catName;
-        allProducts = data.products; // Guardamos los productos en la variable global
-        showData(allProducts); // Mostramos los productos sin filtrar
-    })
-    .catch((error) => {
-      console.error("Hubo un problema con el fetch:", error);
+    getJSONData(`${PRODUCTS_URL}/${categoriaId}.json`).then(function(resultObj){
+        if (resultObj.status === "ok"){
+            categoria = resultObj.data.catName;
+            allProducts = resultObj.data.products; // Guardamos los productos en la variable global
+            showData(allProducts); // Mostramos los productos sin filtrar
+        }
     });
-}
-
-getAPIData(API_URL);
+});
 
 let mostrador = document.getElementById("mostrador");
 let seleccion = document.getElementById("seleccion");
@@ -126,9 +116,14 @@ function cargar(item){
         mostrador.style.transform ='translateX(-6vw)';
         seleccion.style.width = "30%";
         seleccion.style.opacity = "1";
-        seleccion.style.border = "1px solid black";
+        if(localStorage.getItem('theme') === 'night'){
+            seleccion.style.border = "1px solid white";
+            item.style.border = "1px solid white"; 
+        } else {
+            seleccion.style.border = "1px solid black";
+            item.style.border = "1px solid black"; 
+        }
         seleccion.style.zIndex = "10"; 
-        item.style.border = "1px solid black"; 
         /*Aparezca la imagen seleccionada en el recuadro*/
         imgSeleccionada.src = item.getElementsByTagName("img")[0].src;
         modeloSeleccionado.innerHTML =  item.getElementsByTagName("h2")[0].innerHTML;
@@ -147,16 +142,23 @@ function cargar(item){
 }
 
 function cerrar() {
-  mostrador.style.width = "100%";
-  mostrador.style.transform = "translateX(0vw)";
-  seleccion.style.width = "0%";
-  seleccion.style.opacity = "0";
-  quitarBordes();
+    mostrador.style.width = "100%";
+    mostrador.style.transform = "translateX(0vw)";
+    seleccion.style.width = "0%";
+    seleccion.style.opacity = "0";
+    quitarBordes();
 }
 
 function quitarBordes() {
-  var items = document.getElementsByClassName("card");
-  for (i = 0; i < items.length; i++) {
-    items[i].style.border = "1px solid lightgray";
-  }
+    var items = document.getElementsByClassName("card");
+    if (localStorage.getItem('theme') === 'night') {
+        for (i = 0; i < items.length; i++) {
+            items[i].style.border = "1px solid #444444";
+        }
+    } else {
+        for (i = 0; i < items.length; i++) {
+            items[i].style.border = "1px solid lightgray";
+        }
+    }
+    
 }

@@ -7,23 +7,10 @@
   <title>eMercado - Todo lo que busques está aquí</title>
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/bootstrap.min.css.map" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
-  <style>
-    .bd-placeholder-img {
-      font-size: 1.125rem;
-      text-anchor: middle;
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
-    }
-
-    @media (min-width: 768px) {
-      .bd-placeholder-img-lg {
-        font-size: 3.5rem;
-      }
-    }
-  </style>
+  <link href="css/my-profile.css" rel="stylesheet">
+  <link href="css/font-awesome.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -36,7 +23,7 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav w-100 justify-content-between">
           <li class="nav-item">
-            <a class="nav-link" href="index.html">Inicio</a>
+            <a class="nav-link active" href="index.html">Inicio</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="categories.html">Categorías</a>
@@ -44,20 +31,99 @@
           <li class="nav-item">
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
-          <li class="nav-item">
-            <a id="user-name" class="nav-link" href="#">Usuario</a>
-          </li>
         </ul>
       </div>
     </div>
-  </nav>
-  <main>
-    <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
-      </div>
+    <div class="user-button ms-auto">
+      <button id="user-name" class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+        Usuario
+      </button>
+      <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end">
+        <li><a class="dropdown-item" href="cart.html">Mi carrito<span id="cart-badge" class="position top-0 start-100 translate-middle badge rounded-pill bg-danger">0</span></a></li>
+        <li><a class="dropdown-item" href="my-profile.html">Mi perfil</a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li><a id="logout" class="dropdown-item" href="#">Cerrar sesión</a></li>
+      </ul>
     </div>
-  </main>
+  </nav>
+  <div class="user-profile">
+    <h2 class="ms-4">Perfil del usuario</h2>  
+    <div class="d-flex justify-content-end">
+      <button id="mododia-noche" class="btn btn-secondary m-3">
+          <i class="fas fa-moon"></i>
+      </button>
+  </div>
+  </div>
+  <hr>
+    <div class="d-flex justify-content-around"> 
+      <div class="profile-container">
+        <img src="img/png-transparent-profile-user-icon-computer-icons-user-profile-head-ico-miscellaneous-black-desktop-wallpaper-thumbnail.png" class="fotoperfil" alt="Foto de usuario" id="profile-picture"/>
+        <div class="container">
+          <h2 id="nombreUsuario">Nombre Usuario</h2>
+          <h4 id="usuario2" class="text-muted">@...</h4>
+        </div>
+      </div>
+      <div> 
+        <label for="upload-button" class="btn btn-outline-dark mt-4">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-bar-up" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M8 10a.5.5 0 0 0 .5-.5V3.707l2.146 2.147a.5.5 0 0 0 .708-.708l-3-3a.5.5 0 0 0-.708 0l-3 3a.5.5 0 1 0 .708.708L7.5 3.707V9.5a.5.5 0 0 0 .5.5m-7 2.5a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13a.5.5 0 0 1-.5-.5"/>
+          </svg>
+          Cambiar foto de perfil</label>
+        <input type="file" id="upload-button" accept="image/*" style="display: none;">    
+      </div>
+    </div> 
+    <br>
+    <form id="myForm" class="needs-validation mb-5" novalidate>
+      <div id="form-container" class="row">
+        <div class="col-md-6 mb-3">
+          <label for="usuario">Usuario</label>
+          <input type="text" id="usuario" name="usuario" class="form-control" disabled readonly>
+        </div>
+        <div class="col-md-6 mb-3">
+          <label for="email">Correo electrónico *</label>
+          <input type="email" id="email" name="email" class="form-control" required>
+          <div class="invalid-feedback">
+            Por favor, introduce un correo electrónico válido.
+          </div>
+        </div>
+        
+        <div class="col-md-6 mb-3">
+          <label for="nombre">Nombre *</label>
+          <input type="text" id="nombre" name="nombre" class="form-control" required>
+          <div class="invalid-feedback">
+            Por favor, introduce un nombre válido.
+          </div>
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label for="snombre">Segundo nombre</label>
+          <input type="text" id="snombre" name="snombre" class="form-control">
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label for="apellido">Apellido *</label>
+          <input type="text" id="apellido" name="apellido" class="form-control" required>
+          <div class="invalid-feedback">
+            Por favor, introduce un apellido válido.
+          </div>
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label for="sapellido">Segundo apellido</label>
+          <input type="text" id="sapellido" name="sapellido" class="form-control">
+        </div>
+        
+        <div class="col-md-6 mb-3">
+          <label for="telefono">Telefono</label>
+          <input type="number" id="telefono" name="telefono" class="form-control">
+        </div>
+
+        <div class="col-md-12">
+          <input type="button" id="cancelar" value="Cancelar" class="btn btn-danger">
+          <input id="guardar" type="submit" value="Guardar cambios" class="btn btn-primary">
+        </div>
+      </div>
+    </form>
   <footer class="text-muted">
     <div class="container">
       <p class="float-end">
@@ -69,14 +135,77 @@
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
   <script src="js/my-profile.js"></script>
-
+  <script src="js/index.js"></script>
   <script>
     window.onload = function() {
         // Verifica si el usuario está logueado y si el nombre de usuario existe en localStorage
         if (localStorage.getItem('loggedIn') && localStorage.getItem('userName')) {
             var userName = localStorage.getItem('userName');
             document.getElementById('user-name').textContent = userName;
+            document.getElementById("usuario").value = userName;
+            document.getElementById("usuario2").innerHTML = "@" + userName;
         }
+        //Si se llenó el input y se guardó su valor lo carga en dicho input
+        function cargarDatos(){
+          if (localStorage.getItem('nombre')) {
+            document.getElementById('nombre').value = localStorage.getItem('nombre');
+            document.getElementById("nombreUsuario").innerHTML = document.getElementById('nombre').value + " ";
+          } else {
+            document.getElementById('nombre').value = "";
+          }
+          if (localStorage.getItem('snombre')) {
+            document.getElementById('snombre').value = localStorage.getItem('snombre');
+          }else {
+            document.getElementById('snombre').value = "";
+          }
+          if (localStorage.getItem('apellido')) {
+            document.getElementById('apellido').value = localStorage.getItem('apellido');
+            document.getElementById("nombreUsuario").innerHTML += document.getElementById('apellido').value
+          }else {
+            document.getElementById('apellido').value = "";
+          }
+          if (localStorage.getItem('sapellido')) {
+              document.getElementById('sapellido').value = localStorage.getItem('sapellido');
+          }else {
+            document.getElementById('sapellido').value = "";
+          }
+          if (localStorage.getItem('telefono')) {
+              document.getElementById('telefono').value = localStorage.getItem('telefono');
+          }else {
+            document.getElementById('telefono').value = "";
+          }
+          if (localStorage.getItem('email')) {
+              document.getElementById('email').value = localStorage.getItem('email');
+          }else {
+            document.getElementById('email').value = "";
+          }
+          if (localStorage.getItem('imgPerfil')){
+            document.getElementById('profile-picture').src = localStorage.getItem('imgPerfil');
+          }
+        }
+
+        cargarDatos();
+
+        document.getElementById('cancelar').addEventListener('click', function(){
+          cargarDatos();
+        });
+        
+        // Función para cambiar la foto de perfil
+        const uploadButton = document.getElementById('upload-button');
+        const profilePicture = document.getElementById('profile-picture');
+
+        uploadButton.addEventListener('change', function() {
+          const file = this.files[0]; // Obtenemos el archivo seleccionado
+          if (file) {
+            const reader = new FileReader(); // Creamos un nuevo lector de archivos
+            // Cuando la lectura del archivo se haya completado
+            reader.onload = function(e) {
+              profilePicture.src = e.target.result;  // Actualizamos la imagen de perfil con la nueva foto
+              localStorage.setItem('imgPerfil', profilePicture.src);
+            };
+            reader.readAsDataURL(file); // Convierte la imagen a una URL esto es necesario para que podamos mostrar la imagen en el navegador sin tener que cargarla desde un servidor.
+          }
+        });
     };
 </script>
 </body>

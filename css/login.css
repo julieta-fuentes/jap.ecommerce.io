@@ -1,9 +1,11 @@
+/*Estilos generales*/
 body {
   position: absolute;
   font-family: "Inter";
   font-size: 15px;
 }
 
+/*Sección login*/
 .login {
   margin-left: 10vw;
   width: min-content;
@@ -11,6 +13,7 @@ body {
   height: 100vh;
 }
 
+/*Formulario*/
 .form-container {
   background: rgba(240, 126, 31, 0.8);
   color: white;
@@ -30,16 +33,30 @@ img {
   border-radius: 0.5rem;
 }
 
-button {
+/*Estilos del botón*/
+.pulse-effect {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  font-size: 1rem;
+  font-size: 0.9rem;
   color: #ffffff;
   background-color: #3d6e94;
   border-radius: 8px;
   border-bottom: 1rem;
   border-color: #ffffff;
+  border: 10px;
+  padding: 2px;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out; /* Transición suave del efecto de pulsación */
 }
 
+.pulse-effect:hover {
+  background-color: #0056b3; /* Cambia el color al pasar el cursor sobre el botón */
+}
+
+.pulse-effect:active {
+  transform: scale(0.9); /* Reduce ligeramente el tamaño del botón cuando se hace clic */
+}
+
+/*Responsive*/
 @media only screen and (max-width: 560px){
   body {
     position: relative;

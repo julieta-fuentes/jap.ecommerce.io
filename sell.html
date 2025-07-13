@@ -21,19 +21,27 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav w-100 justify-content-between">
           <li class="nav-item">
-            <a class="nav-link" href="index.html">Inicio</a>
+            <a class="nav-link active" href="index.html">Inicio</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="categories.html">Categorías</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" href="sell.html">Vender</a>
-          </li>
-          <li class="nav-item">
-            <a id="user-name" class="nav-link" href="#">Usuario</a>
+            <a class="nav-link" href="sell.html">Vender</a>
           </li>
         </ul>
       </div>
+    </div>
+    <div class="user-button ms-auto">
+      <button id="user-name" class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+        Usuario
+      </button>
+      <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end">
+        <li><a class="dropdown-item" href="cart.html">Mi carrito<span id="cart-badge" class="position top-0 start-100 translate-middle badge rounded-pill bg-danger">0</span></a></li>
+        <li><a class="dropdown-item" href="my-profile.html">Mi perfil</a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li><a id="logout" class="dropdown-item" href="#">Cerrar sesión</a></li>
+      </ul>
     </div>
   </nav>
   <div class="container">
@@ -226,7 +234,7 @@
   <script src="js/dropzone.js"></script>
   <script src="js/init.js"></script>
   <script src="js/sell.js"></script>
-
+  <script src="js/index.js"></script>
   <script>
     window.onload = function() {
         // Verifica si el usuario está logueado y si el nombre de usuario existe en localStorage

@@ -9,6 +9,10 @@
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
+  <link href="css/cart.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <link rel="stylesheet" href="sweetalert2.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 
 <body>
@@ -21,7 +25,7 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav w-100 justify-content-between">
           <li class="nav-item">
-            <a class="nav-link" href="index.html">Inicio</a>
+            <a class="nav-link active" href="index.html">Inicio</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="categories.html">Categorías</a>
@@ -29,17 +33,182 @@
           <li class="nav-item">
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
-          <li class="nav-item">
-            <a id="user-name" class="nav-link" href="#">Usuario</a>
-          </li>
         </ul>
       </div>
     </div>
+    <div class="user-button ms-auto">
+      <button id="user-name" class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+        Usuario
+      </button>
+      <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end">
+        <li><a class="dropdown-item" href="cart.html">Mi carrito<span id="cart-badge" class="position top-0 start-100 translate-middle badge rounded-pill bg-danger">0</span></a></li>
+        <li><a class="dropdown-item" href="my-profile.html">Mi perfil</a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li><a id="logout" class="dropdown-item" href="#">Cerrar sesión</a></li>
+      </ul>
+    </div>
   </nav>
   <main>
+    <!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Datos de envío</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">Dirección de envío</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">Forma de pago</button>
+          </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+          <!-- Sección Datos de Envío -->
+          <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
+            <form class="row g-3">
+              <div class="col-md-6">
+                <label for="departamento" class="form-label">Departamento:</label>
+                <input type="text" class="form-control" id="departamento" placeholder="Ingrese su departamento..." required>
+              </div>
+              <div class="col-md-6">
+                <label for="localidad" class="form-label">Localidad:</label>
+                <input type="text" class="form-control" id="localidad" placeholder="Ingrese su localidad..." required>
+              </div>
+              <div class="col-md-5">
+                <label for="calle" class="form-label">Calle:</label>
+                <input type="text" class="form-control" id="calle" placeholder="Ingrese su calle..." required>
+              </div>
+              <div class="col-md-2">
+                <label for="numero" class="form-label">Número:</label>
+                <input type="text" class="form-control" id="numero" placeholder="Ingrese su número..." required>
+              </div>
+              <div class="col-md-5">
+                <label for="esquina" class="form-label">Esquina:</label>
+                <input type="text" class="form-control" id="esquina" placeholder="Ingrese su esquina..." required>
+              </div>
+            </form>
+          </div>
+
+          <!-- Sección Forma de Pago -->
+          <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
+            <h4>Elige cómo pagar</h4>
+            <form id="payment-form">
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="paymentMethod" id="creditCard" value="creditCard">
+                <label class="form-check-label" for="creditCard">
+                  <i class="fa-solid fa-credit-card fa-flip"></i> Tarjeta de crédito
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="paymentMethod" id="debitCard" value="debitCard">
+                <label class="form-check-label" for="debitCard">
+                  <i class="fa-regular fa-credit-card fa-flip"></i> Tarjeta de débito
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="paymentMethod" id="cash" value="cash">
+                <label class="form-check-label" for="cash">
+                  <i class="fa-solid fa-money-bill-wave fa-flip"></i> Efectivo en redes de cobranza
+                </label>
+              </div>
+
+              <!-- Formulario para ingresar los datos de la tarjeta -->
+              <div id="card-details-form" style="display: none; margin-top: 20px;">
+                <form class="row g-3">
+                  <h5>Ingresa los datos de tu tarjeta</h5>
+                  <div class="col-md-5">
+                    <label for="cardNumber" class="form-label">Número de tarjeta:</label>
+                    <input type="text" class="form-control" id="cardNumber" placeholder="1234 5678 9012 3456" required>
+                  </div>
+                  <div class="col-md-6">
+                    <label for="cardName" class="form-label">Nombre en la tarjeta:</label>
+                    <input type="text" class="form-control" id="cardName" placeholder="Tu nombre" required>
+                  </div>
+                  <div class="col-md-2">
+                    <label for="expirationDate" class="form-label">Fecha de vencimiento:</label>
+                    <input type="text" class="form-control" id="expirationDate" placeholder="MM/AA" required>
+                  </div>
+                  <div class="col-md-2">
+                    <label for="cvv" class="form-label">CVV:</label>
+                    <input type="text" class="form-control" id="cvv" placeholder="123" required>
+                  </div>
+                </form>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- Botones del modal -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" id="btn-finalizar" class="btn btn-primary">Finalizar compra</button>
+      </div>
+    </div>
+  </div>
+</div>
+
     <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
+      <h2 class="carrito">Mi carrito <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-cart4" viewBox="0 0 16 16">
+        <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5M3.14 5l.5 2H5V5zM6 5v2h2V5zm3 0v2h2V5zm3 0v2h1.36l.5-2zm1.11 3H12v2h.61zM11 8H9v2h2zM8 8H6v2h2zM5 8H3.89l.5 2H5zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2m-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0m9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2m-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0"/>
+      </svg></h2>
+    </div>
+    <div class="contenedor">
+      <!-- primer tabla con productos -->
+      <div class="table-responsive">
+        <table class="table table-hover table">
+          <thead>
+              <tr>
+                  <th>Artículo</th>
+                  <th>Nombre</th>
+                  <th>Precio</th>
+                  <th>Cantidad</th>
+                  <th>Subtotal</th>
+                  <th>Eliminar</th>
+              </tr>
+          </thead>
+          <tbody id="cart-items">
+          </tbody>
+        </table>
+      </div>
+      <!-- segunda tabla de compra -->
+      <div class="compra">
+        <h4>Resumen de compra</h4>
+        <div class="compra-input">
+          <label for="subtotal">Subtotal:</label><br>
+          <input type="text" name="subtotal" id="subtotal" value="0" readonly><br>
+
+          <label for="envio">Tipo de envio:</label><br>
+          <select id="envio" class="form-select">
+            <option name="opcion" value="0.15">Premium 2 a 5 días (15%)</option>
+            <option name="opcion" value="0.7">Express 5 a 8 días (7%)</option>
+            <option name="opcion" value="0.5">Standard 12 a 15 días (5%)</option>
+          </select>
+
+          <label for="costoEnvio">Costo de envio:</label><br>
+          <input type="text" name="costoEnvio" id="costoEnv" value="0" readonly><br>
+
+          <label for="total">Total:</label><br>
+          <input type="text" name="total" id="total" value="0" readonly><br>
+        </div>
+        <div class="btn-radio">
+          <label>
+            <input type="radio" name="opcion" id="dolares" value="USD">
+            USD
+          </label>
+        
+          <label>
+            <input type="radio" name="opcion" id="pesos" value="UYU">
+            UYU
+          </label><br>
+        </div>
+          <button id="continue-btn" class="continue-btn">Continuar comprando</button>
+          <button id="checkout-btn" class="checkout-btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop" disabled>Realizar Compra</button>
+        
       </div>
     </div>
   </main>
@@ -61,8 +230,7 @@
   </div>
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
-  <script src="js/cart.js"></script>
-
+  <script src="js/index.js"></script>
   <script>
     window.onload = function() {
         // Verifica si el usuario está logueado y si el nombre de usuario existe en localStorage
@@ -72,6 +240,7 @@
         }
     };
 </script>
+<script src="js/cart.js"></script>
 </body>
 
 </html>

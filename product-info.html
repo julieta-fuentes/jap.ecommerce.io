@@ -12,7 +12,8 @@
   <link href="css/styles.css" rel="stylesheet">
   <link href="css/product.css" rel="stylesheet">
   <link href="css/product-info.css" rel="stylesheet">
-  <script src="product-info.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <link rel="stylesheet" href="sweetalert2.min.css">
 </head>
 
 <body>
@@ -25,7 +26,7 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav w-100 justify-content-between">
           <li class="nav-item">
-            <a class="nav-link" href="index.html">Inicio</a>
+            <a class="nav-link active" href="index.html">Inicio</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="categories.html">Categorías</a>
@@ -33,14 +34,74 @@
           <li class="nav-item">
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
-          <li class="nav-item">
-            <a id="user-name" class="nav-link" href="#">Usuario</a>
-          </li>
         </ul>
       </div>
     </div>
+    <div class="user-button ms-auto">
+      <button id="user-name" class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+        Usuario
+      </button>
+      
+      <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end">
+        <li><a class="dropdown-item" href="cart.html">Mi carrito<span id="cart-badge" class="position top-0 start-100 translate-middle badge rounded-pill bg-danger">0</span></a></li>
+        <li><a class="dropdown-item" href="my-profile.html">Mi perfil</a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li><a id="logout" class="dropdown-item" href="#">Cerrar sesión</a></li>
+      </ul>
+    </div>
   </nav>
-  <div class="container d-flex justify-content-center" id="product-info">
+  <div class="container d-flex justify-content-center">
+    <div class="card-body">
+      <div id="product-info">
+
+      </div>
+      <!-- seccion de compra -->
+      <div class="container d-flex justify-content-center align-items-center">
+        <div class="input-group me-2" style="max-width: 150px;"> 
+            <button id="btnMenos" class="btn btn-outline-secondary">-</button>
+            <input type="text" id="cantidad" value="1" min="1" class="form-control" style="width: 40px; text-align: center;"> <!-- Ancho reducido -->
+            <button id="btnMas" class="btn btn-outline-secondary">+</button>
+        </div>
+        <button id="btnComprar" class="btn btn-primary">Comprar</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="resenias row">
+    <div class="calificar1 col-md-8"> <!-- seccion de comentarios -->
+      <h4>Comentarios</h4>
+      <hr>
+      <div id="calificaciones-container" class="row">
+      </div>    
+    </div>
+    <div class="calificar2"> <!-- controles para realizar un comentario -->
+      <form id="ratingForm">
+        <h4>Califique nuestro producto</h4>
+        <div class="star-rating">
+          <input type="radio" id="star5" name="rating" value="5" />
+          <label for="star5" title="5 estrellas">★</label>
+          <input type="radio" id="star4" name="rating" value="4" />
+          <label for="star4" title="4 estrellas">★</label>
+          <input type="radio" id="star3" name="rating" value="3" />
+          <label for="star3" title="3 estrellas">★</label>
+          <input type="radio" id="star2" name="rating" value="2" />
+          <label for="star2" title="2 estrellas">★</label>
+          <input type="radio" id="star1" name="rating" value="1" />
+          <label for="star1" title="1 estrella">★</label>
+        </div>
+        <h5>Comparte mas sobre tu experiencia:</h5>
+        <textarea id="comment" placeholder="Deja tu comentario aqui..." rows="5" cols="39"></textarea><br>
+        <button type="submit" id="submit">Enviar</button>
+      </form>
+    </div>
+  </div>
+  <br>
+  <div class="container d-flex justify-content-center">
+  <div class="related-products">
+    <h2 class="text-center">Productos Relacionados</h2>
+    <div class="row" id="related-products-container">
+    </div>
+  </div>
   </div>
   </main>
   <footer class="text-muted">
@@ -62,7 +123,7 @@
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
   <script src="js/product-info.js"></script>
-
+  <script src="js/index.js"></script>
   <script>
     window.onload = function() {
         // Verifica si el usuario está logueado y si el nombre de usuario existe en localStorage
